@@ -12,3 +12,19 @@ function getComputerChoice() {
 
   return computerChoice;
 }
+
+function getHumanChoice() {
+  let result = prompt("Choose your arsenal : rock, paper, scissors");
+
+  if (result.toLowerCase() === "rock") {
+    result = "ROCK";
+  } else if (result.toLowerCase() === "paper") {
+    result = "PAPER";
+  } else if (result.toLowerCase() === "scissors") {
+    result = "SCISSORS";
+  } else {
+    alert("Your answered is wrong");
+  }
+
+  return result;
+}
