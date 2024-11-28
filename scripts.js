@@ -72,7 +72,6 @@ function playGame() {
 
   for (let i = 1; i <= 5; i++) {
     playRound(humanSelection(), computerSelection());
-    console.log({ humanScore, computerScore });
   }
 
   if (humanScore > computerScore) {
