@@ -33,39 +33,53 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-// Logic how to play
-function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
+function playGame() {
+  // Logic how to play
+  function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
 
-  if (humanChoice === computerChoice) {
-    console.log(`${humanChoice} v.s ${computerChoice} is tied`);
-  } else if (humanChoice === "rock") {
-    if (computerChoice === "paper") {
-      console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
-      computerScore += 1;
-    } else if (computerChoice === "scissors") {
-      console.log(`You win, ${humanChoice} beats ${computerChoice}`);
-      humanScore += 1;
+    if (humanChoice === computerChoice) {
+      console.log(`${humanChoice} v.s ${computerChoice} is tied`);
+    } else if (humanChoice === "rock") {
+      if (computerChoice === "paper") {
+        console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
+        computerScore += 1;
+      } else if (computerChoice === "scissors") {
+        console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+        humanScore += 1;
+      }
+    } else if (humanChoice === "paper") {
+      if (computerChoice === "scissors") {
+        console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
+        computerScore += 1;
+      } else if (computerChoice === "rock") {
+        console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+        humanScore += 1;
+      }
+    } else if (humanChoice === "scissors") {
+      if (computerChoice === "paper") {
+        console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+        humanScore += 1;
+      } else if (computerChoice === "rock") {
+        console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
+        computerScore += 1;
+      }
     }
-  } else if (humanChoice === "paper") {
-    if (computerChoice === "scissors") {
-      console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
-      computerScore += 1;
-    } else if (computerChoice === "rock") {
-      console.log(`You win, ${humanChoice} beats ${computerChoice}`);
-      humanScore += 1;
-    }
-  } else if (humanChoice === "scissors") {
-    if (computerChoice === "paper") {
-      console.log(`You win, ${humanChoice} beats ${computerChoice}`);
-      humanScore += 1;
-    } else if (computerChoice === "rock") {
-      console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
-      computerScore += 1;
-    }
+  }
+
+  const humanSelection = getHumanChoice;
+  const computerSelection = getComputerChoice;
+
+  for (let i = 1; i <= 5; i++) {
+    playRound(humanSelection(), computerSelection());
+    console.log({ humanScore, computerScore });
+  }
+
+  if (humanScore > computerScore) {
+    console.log("Congratulations you win agains computer");
+  } else {
+    console.log("You're lose from computer");
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+playGame();
